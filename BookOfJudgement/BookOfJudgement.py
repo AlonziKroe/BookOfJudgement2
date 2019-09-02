@@ -141,14 +141,15 @@ class Velka:
                         if user.id in self.timeout["DAILY_LIMIT"][scoreType]:
                             limit = self.settings["SCORE_TYPE"][scoreType]["dailyLimit"]
                             amt = self.timeout["DAILY_LIMIT"][scoreType][user.id]
-                            if amt >= limit and not user.server_permissions.manage_messages:
-                                msg = user.name + " has already given the maximum "
-                                msg += self.settings['SCORE_TYPE'][scoreType]["noun"] + " for " + scoreType
-                                msg += " today."
-                                await self.bot.send_message(message.channel, msg)
-                                return
-                            else:
-                                self.timeout["DAILY_LIMIT"][scoreType][user.id] = amt + 1
+                            if amt < 0
+                                if amt >= limit and not user.server_permissions.manage_messages:
+                                    msg = user.name + " has already given the maximum "
+                                    msg += self.settings['SCORE_TYPE'][scoreType]["noun"] + " for " + scoreType
+                                    msg += " today."
+                                    await self.bot.send_message(message.channel, msg)
+                                    return
+                                else:
+                                    self.timeout["DAILY_LIMIT"][scoreType][user.id] = amt + 1
                         else:
                             self.timeout["DAILY_LIMIT"][scoreType][user.id] = 1
                     else:
